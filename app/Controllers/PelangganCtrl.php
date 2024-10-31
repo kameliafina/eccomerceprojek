@@ -43,12 +43,100 @@ class PelangganCtrl extends BaseController
 
     public function kebersihan()
     {
-        return view('pelanggan/kebersihan');
+        $dapur = new ModelBarang();
+        $ambil = $dapur->findAll();
+
+        // var_dump($ambil);
+        // die();
+
+        $data = [
+            'datadapur' => $ambil
+        ];
+        return view('pelanggan/kebersihan', $data);
+    }
+
+    public function furniture()
+    {
+        $dapur = new ModelBarang();
+        $ambil = $dapur->findAll();
+
+        // var_dump($ambil);
+        // die();
+
+        $data = [
+            'datadapur' => $ambil
+        ];
+        return view('pelanggan/furniture', $data);
     }
 
     public function anak()
     {
-        return view('pelanggan/anak');
+        $dapur = new ModelBarang();
+        $ambil = $dapur->findAll();
+
+        // var_dump($ambil);
+        // die();
+
+        $data = [
+            'datadapur' => $ambil
+        ];
+        return view('pelanggan/anak', $data);
+    }
+
+    public function mandi()
+    {
+        $dapur = new ModelBarang();
+        $ambil = $dapur->findAll();
+
+        // var_dump($ambil);
+        // die();
+
+        $data = [
+            'datadapur' => $ambil
+        ];
+        return view('pelanggan/mandi', $data);
+    }
+
+    public function kebun()
+    {
+        $dapur = new ModelBarang();
+        $ambil = $dapur->findAll();
+
+        // var_dump($ambil);
+        // die();
+
+        $data = [
+            'datadapur' => $ambil
+        ];
+        return view('pelanggan/kebun', $data);
+    }
+
+    public function tempatmakan()
+    {
+        $dapur = new ModelBarang();
+        $ambil = $dapur->findAll();
+
+        // var_dump($ambil);
+        // die();
+
+        $data = [
+            'datadapur' => $ambil
+        ];
+        return view('pelanggan/tempatmakan', $data);
+    }
+
+    public function box()
+    {
+        $dapur = new ModelBarang();
+        $ambil = $dapur->findAll();
+
+        // var_dump($ambil);
+        // die();
+
+        $data = [
+            'datadapur' => $ambil
+        ];
+        return view('pelanggan/box', $data);
     }
 
     public function tambahkeranjang()

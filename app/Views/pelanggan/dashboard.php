@@ -185,7 +185,7 @@
                 </a>
               </li>
               <li>
-                <a href="#" class="rounded-circle bg-light p-2 mx-1">
+              <a href="<?= site_url('pelangganctrl/lihatkeranjang') ?>" class="rounded-circle bg-light p-2 mx-1">
                   <svg width="24" height="24" viewBox="0 0 24 24"><use xlink:href="#heart"></use></svg>
                 </a>
               </li>
@@ -383,11 +383,11 @@
                   <img src="<?php echo base_url('asset-pelanggan') ?>/images/icon.png" alt="Category Thumbnail">
                   <h3 class="category-title">kitchen</h3>
                 </a>
-                <a href="<?= site_url('/pelangganctrl/kebersihan')?>" class="nav-link category-item swiper-slide">
+                <a href="<?= site_url('/pelangganctrl/furniture')?>" class="nav-link category-item swiper-slide">
                   <img src="<?php echo base_url('asset-pelanggan') ?>/images/icon2.png" alt="Category Thumbnail">
                   <h3 class="category-title">furniture</h3>
                 </a>
-                <a href="index.html" class="nav-link category-item swiper-slide">
+                <a href="<?= site_url('/pelangganctrl/kebersihan')?>" class="nav-link category-item swiper-slide">
                   <img src="<?php echo base_url('asset-pelanggan') ?>/images/pail.png" alt="Category Thumbnail">
                   <h3 class="category-title">Peralatan Kebersihan</h3>
                 </a>
@@ -395,19 +395,19 @@
                   <img src="<?php echo base_url('asset-pelanggan') ?>/images/children.png" alt="Category Thumbnail">
                   <h3 class="category-title">Anak</h3>
                 </a>
-                <a href="index.html" class="nav-link category-item swiper-slide">
+                <a href="<?= site_url('/pelangganctrl/mandi')?>" class="nav-link category-item swiper-slide">
                   <img src="<?php echo base_url('asset-pelanggan') ?>/images/bath.png" alt="Category Thumbnail">
                   <h3 class="category-title">Peralatan Kamar Mandi</h3>
                 </a>
-                <a href="index.html" class="nav-link category-item swiper-slide">
+                <a href="<?= site_url('/pelangganctrl/kebun')?>" class="nav-link category-item swiper-slide">
                   <img src="<?php echo base_url('asset-pelanggan') ?>/images/garden.png" alt="Category Thumbnail">
                   <h3 class="category-title">Alat Berkebun</h3>
                 </a>
-                <a href="index.html" class="nav-link category-item swiper-slide">
+                <a href="<?= site_url('/pelangganctrl/tempatmakan')?>" class="nav-link category-item swiper-slide">
                   <img src="<?php echo base_url('asset-pelanggan') ?>/images/tepak.png" alt="Category Thumbnail">
                   <h3 class="category-title">Toples dan Tempat Makan</h3>
                 </a>
-                <a href="index.html" class="nav-link category-item swiper-slide">
+                <a href="<?= site_url('/pelangganctrl/box')?>" class="nav-link category-item swiper-slide">
                   <img src="<?php echo base_url('asset-pelanggan') ?>/images/box.png" alt="Category Thumbnail">
                   <h3 class="category-title">Tempat Penyimpanan Barang</h3>
                 </a>
