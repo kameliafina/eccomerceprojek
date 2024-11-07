@@ -9,4 +9,9 @@ class ModelBarang extends Model
     protected $table            = 'barang';
     protected $primaryKey       = 'kd_barang';
     protected $allowedFields    = ['kd_barang', 'nama_barang', 'harga_barang', 'stok', 'deskripsi', 'foto', 'id_kat'];
+
+    public function getBarangById($kd_barang)
+    {
+        return $this->where(['kd_barang' => $kd_barang])->first();
+    }
 }

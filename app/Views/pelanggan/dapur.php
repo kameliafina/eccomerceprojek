@@ -12,7 +12,7 @@ PERALATAN DAPUR
                         <span class="badge bg-success position-absolute m-3">-30%</span>
                         
                         <figure>
-                          <a href="index.html" title="Product Title">
+                          <a href="/pelangganctrl/detail/<?= $barang['kd_barang']?>" title="Product Title">
                           <img src="<?= base_url('upload/' . $barang['foto']) ?>" alt="<?= $barang['nama_barang'] ?>" class="tab-i">
                           </a>
                         </figure>
