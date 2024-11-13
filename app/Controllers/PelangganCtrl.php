@@ -203,42 +203,53 @@ class PelangganCtrl extends BaseController
         return view('pelanggan/sukses');
     }
 
+    
+
+    // Controller
     public function detail($kd_barang)
     {
-        helper('form');
-        $dapur = new ModelBarang();
-        $data['datadapur'] = $dapur->find($kd_barang);
+        $barang = $this->barangModel->find($kd_barang);
         
-        return view('/pelanggan/detail', $data);
-    }
-
-    public function tampildetail()
-    {
-        $dapur = new ModelBarang();
-
-        $kd_barang = $this->request->getPost('kd_barang');
-        $nama_barang = $this->request->getPost('nama_barang');
-        $id_kat = $this->request->getPost('id_kat');
-        $harga_barang = $this->request->getPost('harga_barang');
-        $stok = $this->request->getPost('stok');
-        $deskripsi = $this->request->getPost('deskripsi');
-        $foto = $this->request->getPost('foto');
-
-        $data = [
-            'kd_barang' => $kd_barang,
-            'nama_barang' => $nama_barang,
-            'id_kat' => $id_kat,
-            'harga_barang' => $harga_barang,
-            'stok' => $stok,
-            'deskripsi' => $deskripsi,
-            'foto' => $foto
-        ];
-
-        if ($dapur->update($kd_barang, $data)) {
-            return redirect()->to('/pelangganctrl/datadapur');
-        } else {
-            return redirect()->back()->with('error', 'Gagal mengupdate data');
+        if (!$barang) {
+            // Redirect atau tampilkan pesan error jika barang tidak ditemukan
+            return redirect()->to('/')->with('error', 'Barang tidak ditemukan');
         }
 
+        $data = [
+            'barang' => $barang
+        ];
+
+        return view('pelanggan/detail', $data);
     }
+
+public function tampildetail()
+{
+    $dapur = new ModelBarang();
+
+    $kd_barang = $this->request->getPost('kd_barang');
+    $nama_barang = $this->request->getPost('nama_barang');
+    $id_kat = $this->request->getPost('id_kat');
+    $harga_barang = $this->request->getPost('harga_barang');
+    $stok = $this->request->getPost('stok');
+    $deskripsi = $this->request->getPost('deskripsi');
+    $foto = $this->request->getPost('foto');
+
+    $data = [
+        'kd_barang' => $kd_barang,
+        'nama_barang' => $nama_barang,
+        'id_kat' => $id_kat,
+        'harga_barang' => $harga_barang,
+        'stok' => $stok,
+        'deskripsi' => $deskripsi,
+        'foto' => $foto
+    ];
+
+    if ($dapur->update($kd_barang, $data)) {
+        return redirect()->to('/pelangganctrl/datadapur');
+    } else {
+        return redirect()->back()->with('error', 'Gagal mengupdate data');
+    }
+}
+
+
 }
