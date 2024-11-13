@@ -29,7 +29,6 @@
                             <button data-mdb-button-init data-mdb-ripple-init class="btn btn-info btn-lg btn-block" type="submit">Login</button>
                         </div>
 
-
                         <p>Don't have an account? <a href="<?= (site_url('auth/tambah')) ?>" class="link-info">Register here</a></p>
                     </form>
                 </div>
