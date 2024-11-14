@@ -169,6 +169,50 @@ class PelangganCtrl extends BaseController
         return redirect()->back()->with('error', 'barang tidak ditemukan');
     }
 
+    public function update_quantity() {
+        $id_barang = $this->request->getPost('kd_barang');
+        $quantity = $this->request->getPost('quantity');
+        $action = $this->request->getPost('action');
+    
+        // Ambil data keranjang dari session atau database
+        $cart = session()->get('cart');
+    
+        // Cek apakah item ada di keranjang
+        foreach ($cart as &$item) {
+            if ($item['kd_barang'] == $id_barang) {
+                if ($action == 'increase') {
+                    $item['quantity']++;
+                } elseif ($action == 'decrease' && $item['quantity'] > 1) {
+                    $item['quantity']--;
+                }
+                break;
+            }
+        }
+    
+        // Simpan kembali keranjang yang sudah diperbarui ke session
+        session()->set('cart', $cart);
+    
+        // Redirect ke halaman keranjang
+        return redirect()->to('pelangganctrl/lihatkeranjang');
+    }
+
+    public function hapus($id_barang) {
+        $cart = session()->get('cart');
+    
+        foreach ($cart as $key => $item) {
+            if ($item['id_barang'] == $id_barang) {
+                unset($cart[$key]);
+                break;
+            }
+        }
+    
+        session()->set('cart', array_values($cart));
+    
+        return redirect()->to('/pelanggan/keranjang');
+    }
+    
+    
+
     //menambah keranjang belanja
     public function lihatkeranjang()
     {
@@ -178,6 +222,8 @@ class PelangganCtrl extends BaseController
         foreach ($cart as $item) {
             $subtotal += $item['harga_barang'] * $item['quantity'];
         }
+        
+        $data['subtotal'] = $subtotal;
         return view('pelanggan/keranjang', [
             'cart' => $cart,
             'subtotal' => $subtotal

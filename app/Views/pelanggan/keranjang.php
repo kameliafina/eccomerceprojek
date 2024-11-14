@@ -62,18 +62,28 @@
                                     <p class="mb-0 mt-4"><?= $item['nama_barang'] ?></p>
                                 </td>
                                 <td>
-                                    <p class="mb-0 mt-4">Rp<?= $item['harga_barang'] ?></p>
+                                    <p class="mb-0 mt-4">Rp<?= $item['harga_barang'] * $item['quantity'] ?></p>
                                 </td>
+
                                 <td>
-                                    <p class="mb-0 mt-4"><?= $item['quantity'] ?></p>
+                                    <div class="d-flex">
+                                        <form action="<?= site_url('pelangganctrl/update_quantity') ?>" method="POST">
+                                            <input type="hidden" name="kd_barang" value="<?= $item['kd_barang'] ?>">
+                                            <button type="submit" name="action" value="decrease" class="btn btn-sm btn-light">-</button>
+                                            <input type="number" class="form-control text-center" value="<?= $item['quantity'] ?>" min="1" name="quantity" readonly>
+                                            <button type="submit" name="action" value="increase" class="btn btn-sm btn-light">+</button>
+                                        </form>
+                                    </div>
                                 </td>
+
                                 <td>
                                     <p class="mb-0 mt-4">Rp.<?= $item['harga_barang'] * $item['quantity'] ?></p>
                                 </td>
                                 <td>
-                                    <button class="btn btn-md rounded-circle bg-light border mt-4">
-                                        <i class="fa fa-times text-danger"></i>
-                                    </button>
+                                <button class="btn btn-md rounded-circle bg-light border mt-4" onclick="window.location.href='<?= site_url('pelangganctrl/hapus/' . $item['kd_barang']) ?>'">
+                                    <i class="fa fa-times text-danger"></i>
+                                </button>
+
                                 </td>
                             <?php endforeach; ?>
                     </tbody>
