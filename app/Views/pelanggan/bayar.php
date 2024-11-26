@@ -93,7 +93,7 @@
                         </div>
 
                         <a href="<?= site_url('/pelangganctrl/sukses') ?>" class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="button">CASH</a>
-                        <a href="<?= site_url('/pelangganctrl/sukses') ?>" class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="button">QRIS</a>
+                        <a href="<?= site_url('/pelangganctrl/pembayaran') ?>" class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="button">QRIS</a>
                     </div>
                 </div>
             </div>

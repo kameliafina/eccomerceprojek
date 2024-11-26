@@ -56,21 +56,30 @@ class KeranjangCtrl extends BaseController
         $cartItemModel = new KeranjangItemModel();
         $userId = session()->get('id_user');
         $cart = (new KeranjangModel())->where('id_user', $userId)->first();
-
+    
+        // Pastikan keranjang ditemukan
+        if (!$cart) {
+            return redirect()->to('pelanggan/keranjang')->with('error', 'Keranjang tidak ditemukan.');
+        }
+    
+        // Cari item di dalam keranjang berdasarkan kode barang dan id keranjang
         $cartItem = $cartItemModel->where('id_keranjang', $cart['id_keranjang'])
                                   ->where('kd_barang', $kd_barang)
                                   ->first();
-
+    
         if ($cartItem) {
             if($cartItem['quantity'] > 1) {
-                $cartItemModel->update($cartItem['id_keranjang'], ['quantity'=>$cartItem['quantity']-1]);
+                // Kurangi quantity item di keranjang
+                $cartItemModel->update($cartItem['id'], ['quantity' => $cartItem['quantity'] - 1]);
             } else {
+                // Hapus item jika quantity hanya satu
                 $cartItemModel->delete($cartItem['id']);
             }
         }
-
+    
         return redirect()->to('pelanggan/keranjang');
     }
+    
 
     public function lihatkeranjang()
     {

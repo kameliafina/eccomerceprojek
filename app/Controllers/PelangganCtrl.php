@@ -196,11 +196,11 @@ class PelangganCtrl extends BaseController
         return redirect()->to('pelangganctrl/lihatkeranjang');
     }
 
-    public function hapus($id_barang) {
+    public function hapus($kd_barang) {
         $cart = session()->get('cart');
     
         foreach ($cart as $key => $item) {
-            if ($item['id_barang'] == $id_barang) {
+            if ($item['kd_barang'] == $kd_barang) {
                 unset($cart[$key]);
                 break;
             }
@@ -208,7 +208,7 @@ class PelangganCtrl extends BaseController
     
         session()->set('cart', array_values($cart));
     
-        return redirect()->to('/pelanggan/keranjang');
+        return redirect()->to('pelangganctrl/lihatkeranjang');
     }
     
     
@@ -249,6 +249,21 @@ class PelangganCtrl extends BaseController
         return view('pelanggan/sukses');
     }
 
+    public function pembayaran()
+    {
+        $cart = $this->session->get('cart') ?? [];
+
+        $subtotal = 0;
+        foreach ($cart as $item) {
+            $subtotal += $item['harga_barang'] * $item['quantity'];
+        }
+        
+        $data['subtotal'] = $subtotal;
+        return view('pelanggan/pembayaran', [
+            'cart' => $cart,
+            'subtotal' => $subtotal
+        ]);
+    }
     
 
     // Controller

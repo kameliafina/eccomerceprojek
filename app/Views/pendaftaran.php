@@ -20,7 +20,7 @@
 
                         <div data-mdb-input-init class="form-outline mb-4">
                             <input type="text" name="username" required class="form-control form-control-lg" />
-                            <label class="form-label" for="username">Email address</label>
+                            <label class="form-label" for="username">Username</label>
                         </div>
 
                         <div data-mdb-input-init class="form-outline mb-4">

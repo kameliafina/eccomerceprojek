@@ -20,11 +20,12 @@ $routes->get('/pelangganctrl/box', 'PelangganCtrl::box');
 $routes->post('/pelangganctrl/tambahkeranjang', 'PelangganCtrl::tambahkeranjang');
 $routes->get('/pelangganctrl/tambahkeranjang', 'PelangganCtrl::tambahkeranjang');
 $routes->get('/pelangganctrl/lihatkeranjang', 'PelangganCtrl::lihatkeranjang');
-$routes->get('/pelangganctrl/hapus', 'PelangganCtrl::hapus');
+$routes->get('/pelangganctrl/hapus/(:segment)', 'PelangganCtrl::hapus/$1');
 $routes->get('/pelangganctrl/update_quantity', 'PelangganCtrl::update_quantity');
 $routes->post('/pelangganctrl/update_quantity', 'PelangganCtrl::update_quantity');
 $routes->get('/pelangganctrl/bayar', 'PelangganCtrl::bayar');
 $routes->get('/pelangganctrl/sukses', 'PelangganCtrl::sukses');
+$routes->get('/pelangganctrl/pembayaran', 'PelangganCtrl::pembayaran');
 $routes->get('/pelangganctrl/detail/(:segment)', 'PelangganCtrl::detail/$1');
 $routes->post('/pelangganctrl/tampildetail', 'PelangganCtrl::tampildetail');
 
