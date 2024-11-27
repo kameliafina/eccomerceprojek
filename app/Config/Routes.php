@@ -43,3 +43,9 @@ $routes->post('/auth/loginSubmit', 'Auth::loginSubmit');
 $routes->get('/auth/logout', 'Auth::logout');
 $routes->get('/auth/tambah', 'Auth::user');
 $routes->post('/auth/tambah', 'Auth::tambah');
+
+$routes->get('/pembayaranctrl/index', 'PembayaranCtrl::index');
+$routes->get('/pembayaranctrl/simpandata', 'PembayaranCtrl::simpandata');
+$routes->post('/pembayaranctrl/simpandata', 'PembayaranCtrl::simpandata');
+$routes->get('/pembayaranctrl/datapembayaran', 'PembayaranCtrl::datapembayaran');
+$routes->get('/pembayaranctrl/tambahdata', 'PembayaranCtrl::tambahdata');
