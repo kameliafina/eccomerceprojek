@@ -35,7 +35,8 @@
             <div class="container py-5">
                 <h1 class="mb-4">Lengkapi Pembayaran</h1>
                 
-                <form>
+                <form action="<?= site_url('/pelangganctrl/proses') ?>" method="post" enctype="multipart/form-data">
+
                     <div class="row g-5">
                         <div class="col-md-12 col-lg-6 col-xl-7">
                             <div class="row">
@@ -45,31 +46,31 @@
                             </div>
                             <div class="form-item">
                                 <label class="form-label my-3">Nama<sup>*</sup></label>
-                                <input type="text" class="form-control" name="">
+                                <input type="text" class="form-control" name="nama">
                             </div>
                             <div class="form-item">
                                 <label class="form-label my-3">Alamat <sup>*</sup></label>
-                                <input type="text" class="form-control" name="">
+                                <input type="text" class="form-control" name="alamat">
                             </div>
                             <div class="form-item">
                                 <label class="form-label my-3">Kota<sup>*</sup></label>
-                                <input type="text" class="form-control" name="">
+                                <input type="text" class="form-control" name="kota">
                             </div>
                             <div class="form-item">
                                 <label class="form-label my-3">Kode Pos<sup>*</sup></label>
-                                <input type="text" class="form-control" name="">
+                                <input type="text" class="form-control" name="kode_pos">
                             </div>
                             <div class="form-item">
                                 <label class="form-label my-3">Nomor HP<sup>*</sup></label>
-                                <input type="text" class="form-control" name="">
+                                <input type="text" class="form-control" name="no_hp">
                             </div>
                             <div class="form-item">
                                 <label class="form-label my-3">Email<sup>*</sup></label>
-                                <input type="text" class="form-control" name="">
+                                <input type="text" class="form-control" name="email">
                             </div>
                             <div class="form-item">
                                 <label class="form-label my-3">Upload Bukti<sup>*</sup></label>
-                                <input type="file" class="form-control" name="">
+                                <input type="file" class="form-control" name="bukti_pembayaran">
                             </div>
                             <hr>
                             
@@ -81,7 +82,8 @@
                                 </div>
           
                             <div class="row g-4 text-center align-items-center justify-content-center pt-4">
-                                <a href="<?= site_url('/pelangganctrl/sukses') ?>" type="submit" class="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary">Place Order</a>
+                            <button type="submit" class="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary">Place Order</button>
+
                             </div>
                         </div>
                     </div>

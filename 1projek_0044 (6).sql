@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 31, 2024 at 02:40 AM
+-- Generation Time: Nov 27, 2024 at 09:12 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -44,8 +44,8 @@ CREATE TABLE `barang` (
 --
 
 INSERT INTO `barang` (`kd_barang`, `nama_barang`, `id_kat`, `harga_barang`, `stok`, `deskripsi`, `foto`, `created_at`, `updated_at`) VALUES
-(16, 'ember', 1, 50000, 23, 'aaaaaaaaaaaaa', 'pro1.jpg', '2024-10-30 17:34:41', '2024-10-30 17:34:41'),
-(18, 'coba', 1, 90000, 80, 'adasasas', '1729752230_81e0a6a9574a7fe69962.png', '2024-10-30 17:34:41', '2024-10-30 17:34:41');
+(18, 'coba', 1, 90000, 80, 'adasasas', '1729752230_81e0a6a9574a7fe69962.png', '2024-10-30 17:34:41', '2024-10-30 17:34:41'),
+(19, 'tempat makan', 1, 10000, 10, 'ini tempat makan berwarna warni', '1730960101_c10f1eec4d5a7cd0f15d.png', '2024-11-07 06:15:01', '2024-11-07 06:15:01');
 
 -- --------------------------------------------------------
 
@@ -90,7 +90,7 @@ INSERT INTO `kategori` (`id_kat`, `nama_kat`) VALUES
 
 CREATE TABLE `keranjang` (
   `id_keranjang` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
+  `id_use` int(11) NOT NULL,
   `kd_barang` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   `create_at` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -100,17 +100,56 @@ CREATE TABLE `keranjang` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- Table structure for table `keranjang_item`
 --
 
-CREATE TABLE `orders` (
-  `id_order` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `total_belanja` decimal(10,2) NOT NULL,
-  `status` enum('pending','completed','cancelled') DEFAULT 'pending',
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+CREATE TABLE `keranjang_item` (
+  `id` int(11) NOT NULL,
+  `id_keranjang` int(11) DEFAULT NULL,
+  `kd_barang` int(11) DEFAULT NULL,
+  `quantity` int(11) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `version` varchar(255) NOT NULL,
+  `class` varchar(255) NOT NULL,
+  `group` varchar(255) NOT NULL,
+  `namespace` varchar(255) NOT NULL,
+  `time` int(11) NOT NULL,
+  `batch` int(11) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pembayaran`
+--
+
+CREATE TABLE `pembayaran` (
+  `id_pembayaran` int(11) NOT NULL,
+  `nama_pel` varchar(255) NOT NULL,
+  `alamat` text NOT NULL,
+  `kota` varchar(255) NOT NULL,
+  `kode_pos` int(11) NOT NULL,
+  `no_hp` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `foto` varchar(255) NOT NULL,
+  `subtotal` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `pembayaran`
+--
+
+INSERT INTO `pembayaran` (`id_pembayaran`, `nama_pel`, `alamat`, `kota`, `kode_pos`, `no_hp`, `email`, `foto`, `subtotal`) VALUES
+(1, 'zfnfzmfnzmq', 'mandmanmdnmad', 'akdkadjkajdka', 9009, 909090, 'kjkjkjk', 'kjkjkjk', 900000);
 
 -- --------------------------------------------------------
 
@@ -130,10 +169,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`) VALUES
-(5, 'admin', 'admin', 'admin@gmail.com'),
-(6, 'john_doe', '$2y$10$e0MYWhCEc1Rfbl1pTpsn0u5fmr3X58Pp6CwI.zbUI0A4UrEwRBDmi', 'john@example.com'),
-(7, 'jane_doe', '$2y$10$e0MYWhCEc1Rfbl1pTpsn0u5fmr3X58Pp6CwI.zbUI0A4UrEwRBDmi', 'jane@example.com'),
-(9, 'fina', '$2y$10$zUvQKttnho8lK1iQxx39aOUJyl1h0r.CMEgV3.iDBvaTD0u0yYIzO', 'fina@gmail.com');
+(1, 'fina', '$2y$10$sqwvon8P1aZY.rnvYc/8C.vRCCwZhZM/fp/pJMuf105AvAnO96V72', '');
 
 --
 -- Indexes for dumped tables
@@ -166,22 +202,33 @@ ALTER TABLE `kategori`
 ALTER TABLE `keranjang`
   ADD PRIMARY KEY (`id_keranjang`),
   ADD KEY `kd_barang` (`kd_barang`),
-  ADD KEY `id_user` (`id_user`);
+  ADD KEY `id_user` (`id_use`);
 
 --
--- Indexes for table `orders`
+-- Indexes for table `keranjang_item`
 --
-ALTER TABLE `orders`
-  ADD PRIMARY KEY (`id_order`),
-  ADD KEY `id_user` (`id_user`);
+ALTER TABLE `keranjang_item`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_keranjang` (`id_keranjang`),
+  ADD KEY `kd_barang` (`kd_barang`);
+
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pembayaran`
+--
+ALTER TABLE `pembayaran`
+  ADD PRIMARY KEY (`id_pembayaran`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -191,7 +238,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `kd_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `kd_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `detail_item`
@@ -212,16 +259,28 @@ ALTER TABLE `keranjang`
   MODIFY `id_keranjang` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `orders`
+-- AUTO_INCREMENT for table `keranjang_item`
 --
-ALTER TABLE `orders`
-  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `keranjang_item`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pembayaran`
+--
+ALTER TABLE `pembayaran`
+  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
@@ -245,13 +304,14 @@ ALTER TABLE `detail_item`
 --
 ALTER TABLE `keranjang`
   ADD CONSTRAINT `keranjang_ibfk_1` FOREIGN KEY (`kd_barang`) REFERENCES `barang` (`kd_barang`) ON DELETE CASCADE,
-  ADD CONSTRAINT `keranjang_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `keranjang_ibfk_2` FOREIGN KEY (`id_use`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `orders`
+-- Constraints for table `keranjang_item`
 --
-ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+ALTER TABLE `keranjang_item`
+  ADD CONSTRAINT `keranjang_item_ibfk_1` FOREIGN KEY (`id_keranjang`) REFERENCES `keranjang` (`id_keranjang`) ON DELETE CASCADE,
+  ADD CONSTRAINT `keranjang_item_ibfk_2` FOREIGN KEY (`kd_barang`) REFERENCES `barang` (`kd_barang`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -28,6 +28,7 @@ $routes->get('/pelangganctrl/sukses', 'PelangganCtrl::sukses');
 $routes->get('/pelangganctrl/pembayaran', 'PelangganCtrl::pembayaran');
 $routes->get('/pelangganctrl/detail/(:segment)', 'PelangganCtrl::detail/$1');
 $routes->post('/pelangganctrl/tampildetail', 'PelangganCtrl::tampildetail');
+$routes->post('/pelangganctrl/tampildetail', 'PelangganCtrl::tampildetail');
 
 $routes->get('/adminctrl/index', 'Adminctrl::index');
 

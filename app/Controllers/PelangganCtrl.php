@@ -312,5 +312,43 @@ public function tampildetail()
     }
 }
 
+public function proses()
+{
+    // Ambil data dari form
+    $nama = $this->request->getPost('nama');
+    $alamat = $this->request->getPost('alamat');
+    $kota = $this->request->getPost('kota');
+    $kode_pos = $this->request->getPost('kode_pos');
+    $nomor_hp = $this->request->getPost('nomor_hp');
+    $email = $this->request->getPost('email');
+    
+    // Ambil file yang diupload
+    $bukti_pembayaran = $this->request->getFile('bukti_pembayaran');
+    
+    // Cek apakah file diupload
+    if ($bukti_pembayaran && $bukti_pembayaran->isValid()) {
+        // Pindahkan file ke folder tertentu
+        $bukti_pembayaran->move(WRITEPATH . 'uploads');
+        $filePath = $bukti_pembayaran->getName();
+    } else {
+        $filePath = null;
+    }
+
+    // Simpan data atau tampilkan hasil
+    $data = [
+        'nama' => $nama,
+        'alamat' => $alamat,
+        'kota' => $kota,
+        'kode_pos' => $kode_pos,
+        'nomor_hp' => $nomor_hp,
+        'email' => $email,
+        'bukti_pembayaran' => $filePath,
+    ];
+
+    // Misalnya, tampilkan data di halaman sukses
+    return view('/pelanggan/detail_bayar', ['data' => $data]);
+}
+
+
 
 }
