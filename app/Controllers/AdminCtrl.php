@@ -23,4 +23,9 @@ class AdminCtrl extends BaseController
         ];
         return view('main/chart', $data);
     }
+
+    public function uang()
+    {
+        
+    }
 }

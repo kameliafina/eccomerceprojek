@@ -35,7 +35,7 @@
             <div class="container py-5">
                 <h1 class="mb-4">Lengkapi Pembayaran</h1>
                 
-                <form action="<?= site_url('/pelangganctrl/proses') ?>" method="post" enctype="multipart/form-data">
+                <form action="<?= site_url('/pelangganctrl/prosespembayaran') ?>" method="post" enctype="multipart/form-data">
 
                     <div class="row g-5">
                         <div class="col-md-12 col-lg-6 col-xl-7">
@@ -46,7 +46,7 @@
                             </div>
                             <div class="form-item">
                                 <label class="form-label my-3">Nama<sup>*</sup></label>
-                                <input type="text" class="form-control" name="nama">
+                                <input type="text" class="form-control" name="nama_pel">
                             </div>
                             <div class="form-item">
                                 <label class="form-label my-3">Alamat <sup>*</sup></label>
@@ -73,11 +73,10 @@
                                 <input type="file" class="form-control" name="bukti_pembayaran">
                             </div>
                             <hr>
-                            
-                            <h1 class="display-6 mb-4"> <span class="fw-normal">Total</span></h1>
+                        
                         <div class="d-flex justify-content-between mb-4">
                             <h5 class="mb-0 me-4">Total Belanja :</h5>
-                            <p class="mb-0">Rp<?= number_format($subtotal, 0, '.', '.') ?></p>
+                            <input type="text" name="subtotal" class="form-control" value="<?= $subtotal ?>" readonly>
                         </div>
                                 </div>
           
