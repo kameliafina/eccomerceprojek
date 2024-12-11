@@ -50,3 +50,8 @@ $routes->get('/pembayaranctrl/simpandata', 'PembayaranCtrl::simpandata');
 $routes->post('/pembayaranctrl/simpandata', 'PembayaranCtrl::simpandata');
 $routes->get('/pembayaranctrl/datapembayaran', 'PembayaranCtrl::datapembayaran');
 $routes->get('/pembayaranctrl/tambahdata', 'PembayaranCtrl::tambahdata');
+
+$routes->get('/userctrl/index', 'UserCtrl::index');
+$routes->get('/userctrl/tambah', 'UserCtrl::tambah');
+$routes->get('/userctrl/datauser', 'UserCtrl::datauser');
+$routes->post('/userctrl/simpan', 'UserCtrl::simpan');

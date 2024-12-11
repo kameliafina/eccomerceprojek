@@ -68,7 +68,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Data Master:</h6>
                         <a class="collapse-item" href="<?= site_url('barangctrl/databarang')?>">Data Barang</a>
-                        <a class="collapse-item" href="cards.html">User</a>
+                        <a class="collapse-item" href="<?= site_url('userctrl/datauser')?>">User</a>
                     </div>
                 </div>
             </li>
