@@ -56,3 +56,16 @@ $routes->get('/userctrl/index', 'UserCtrl::index');
 $routes->get('/userctrl/tambah', 'UserCtrl::tambah');
 $routes->get('/userctrl/datauser', 'UserCtrl::datauser');
 $routes->post('/userctrl/simpan', 'UserCtrl::simpan');
+
+$routes->get('/kasirctrl/index', 'KasirCtrl::index');
+$routes->get('/kasirctrl/databarang', 'KasirCtrl::databarang');
+$routes->get('/kasirctrl/tambahkeranjang', 'KasirCtrl::tambahkeranjang');
+$routes->post('/kasirctrl/tambahkeranjang', 'KasirCtrl::tambahkeranjang');
+$routes->get('/kasirctrl/bayar', 'KasirCtrl::bayar');
+$routes->get('/kasirctrl/pembayaran', 'KasirCtrl::pembayaran');
+$routes->get('/kasirctrl/update_quantity', 'KasirCtrl::update_quantity');
+$routes->post('/kasirctrl/update_quantity', 'KasirCtrl::update_quantity');
+$routes->get('/kasirctrl/lihatkeranjang', 'KasirCtrl::lihatkeranjang');
+$routes->get('/kasirctrl/prosespembayaran', 'KasirCtrl::prosespembayaran');
+$routes->post('/kasirctrl/prosespembayaran', 'KasirCtrl::prosespembayaran');
+$routes->get('/kasirctrl/sukses', 'KasirCtrl::sukses');

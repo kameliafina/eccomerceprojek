@@ -84,7 +84,7 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Transaksi</h6>
-                        <a class="collapse-item" href="utilities-color.html">Kasir</a>
+                        <a class="collapse-item" href="<?= site_url('kasirctrl/databarang')?>">Kasir</a>
                         <a class="collapse-item" href="utilities-border.html">Laporan</a>
                         <a class="collapse-item" href="utilities-animation.html">Histori</a>
                     </div>
