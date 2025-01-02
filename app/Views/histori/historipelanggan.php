@@ -43,7 +43,6 @@ HISTORI PELANGGAN
       <td><?= $pelanggan['kode_pos']?></td>
       <td><?= $pelanggan['no_hp']?></td>
       <td><?= $pelanggan['email']?></td>
-      <td><?= $pelanggan['foto']?></td>
       <td><?= $pelanggan['subtotal']?></td>
     </tr>
     <?php endforeach?>
