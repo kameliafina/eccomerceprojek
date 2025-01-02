@@ -67,4 +67,46 @@ class BarangCtrl extends BaseController
 
         return redirect()->to('barangctrl/databarang');
     }
+
+    public function editbarang($kd_barang)
+    {
+        helper('form');
+        $barang = new ModelBarang();
+        $data['row'] = $barang->find($kd_barang);
+
+        return view('/barang/editbarang', $data);
+    }
+
+    public function updatebarang() {
+        $barang = new ModelBarang();
+
+        $kd_barang = $this->request->getPost('kd_barang');
+        $nama_barang = $this->request->getPost('nama_barang');
+        $id_kat = $this->request->getPost('id_kat');
+        $harga_barang = $this->request->getPost('harga_barang');
+        $stok = $this->request->getPost('stok');
+        $deskripsi = $this->request->getPost('deskripsi');
+        $namafoto = $this->request->getPost('foto');
+
+        $data = [
+            'kd_barang' => $kd_barang,
+            'nama_barang' => $nama_barang,
+            'id_kat' => $id_kat,
+            'harga_barang' => $harga_barang,
+            'stok' => $stok,
+            'deskripsi' => $deskripsi,
+            'foto' => $namafoto,
+        ];
+
+        //untuk upload foto
+        $foto = $this->request->getFile('foto');
+        $namafoto = $foto->getRandomName(); //memberikan nama random difile foto
+        $foto->move('upload', $namafoto); //memindah file foto ke dalam folder uploads
+
+        if ($barang->update($kd_barang, $data)) {
+            return redirect()->to('/barangctrl/databarang');
+        } else {
+            return redirect()->back()->with('error', 'Gagal mengupdate data');
+        }
+    }
 }

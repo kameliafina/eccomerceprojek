@@ -37,6 +37,8 @@ $routes->get('/barangctrl/index', 'BarangCtrl::index');
 $routes->get('/barangctrl/tambah', 'BarangCtrl::tambah');
 $routes->get('/barangctrl/databarang', 'BarangCtrl::databarang');
 $routes->post('/barangctrl/simpan', 'BarangCtrl::simpan');
+$routes->post('/barangctrl/updatebarang', 'BarangCtrl::updatebarang');
+$routes->get('/barangctrl/editbarang/(:any)', 'BarangCtrl::editbarang/$1');
 
 $routes->post('/cekoutctrl/lihatcek', 'CekoutCtrl::lihatcek');
 
@@ -69,3 +71,10 @@ $routes->get('/kasirctrl/lihatkeranjang', 'KasirCtrl::lihatkeranjang');
 $routes->get('/kasirctrl/prosespembayaran', 'KasirCtrl::prosespembayaran');
 $routes->post('/kasirctrl/prosespembayaran', 'KasirCtrl::prosespembayaran');
 $routes->get('/kasirctrl/sukses', 'KasirCtrl::sukses');
+
+
+$routes->get('/historictrl/index', 'HistoriCtrl::index');
+$routes->get('/historictrl/datapelanggan', 'HistoriCtrl::datapelanggan');
+$routes->get('/historictrl/databarang', 'HistoriCtrl::databarang');
+
+

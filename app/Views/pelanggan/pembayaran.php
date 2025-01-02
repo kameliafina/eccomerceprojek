@@ -70,7 +70,7 @@
                             </div>
                             <div class="form-item">
                                 <label class="form-label my-3">Upload Bukti<sup>*</sup></label>
-                                <input type="file" class="form-control" name="bukti_pembayaran">
+                                <input type="file" class="form-control" name="foto">
                             </div>
                             <hr>
                         

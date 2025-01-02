@@ -39,9 +39,9 @@ BARANG
         <img src="<?= base_url('upload/' . $barang['foto']) ?>" alt="<?= $barang['nama_barang'] ?>" width="100" height="auto">
       </td>
       <td>
-        <a href="#" class="btn btn-danger btn-circle">
+        <a href="" class="btn btn-danger btn-circle">
           <i class="fas fa-trash"></i></a>
-        <a href="#" class="btn btn-success btn-circle">
+        <a href="/barangctrl/editbarang/<?= $barang['kd_barang'] ?>" class="btn btn-success btn-circle">
           <i class="fas fa-edit"></i></a>
       </td>
     </tr>

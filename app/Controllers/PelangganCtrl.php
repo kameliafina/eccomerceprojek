@@ -295,7 +295,7 @@ class PelangganCtrl extends BaseController
             'kode_pos' => 'required',
             'no_hp' => 'required',
             'email' => 'required|valid_email',
-            'bukti_pembayaran' => 'uploaded[bukti_pembayaran]|max_size[bukti_pembayaran,2048]|is_image[bukti_pembayaran]|mime_in[bukti_pembayaran,image/jpg,image/jpeg,image/gif,image/png]',
+            'foto' => 'uploaded[foto]|max_size[foto,2048]|is_image[foto]|mime_in[foto,image/jpg,image/jpeg,image/gif,image/png]',
         ]);
 
         if (!$this->validate($validation->getRules())) {
@@ -315,10 +315,10 @@ class PelangganCtrl extends BaseController
         ];
 
         // Proses upload bukti pembayaran
-        if ($this->request->getFile('bukti_pembayaran')->isValid()) {
-            $file = $this->request->getFile('bukti_pembayaran');
-            $file->move('uploads/bukti_pembayaran'); // Pastikan folder ini ada
-            $data['bukti_pembayaran'] = $file->getName(); // Simpan nama file
+        if ($this->request->getFile('foto')->isValid()) {
+            $file = $this->request->getFile('foto');
+            $file->move('uploads/foto'); // Pastikan folder ini ada
+            $data['foto'] = $file->getName(); // Simpan nama file
         }
 
         // Simpan data ke database
