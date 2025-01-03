@@ -19,6 +19,7 @@ $routes->get('/pelangganctrl/tempatmakan', 'PelangganCtrl::tempatmakan');
 $routes->get('/pelangganctrl/box', 'PelangganCtrl::box');
 $routes->post('/pelangganctrl/tambahkeranjang', 'PelangganCtrl::tambahkeranjang');
 $routes->get('/pelangganctrl/tambahkeranjang', 'PelangganCtrl::tambahkeranjang');
+$routes->post('pelangganctrl/tambahkeranjang', 'Pelanggan::tambahkeranjang', ['filter' => 'auth']);
 $routes->get('/pelangganctrl/lihatkeranjang', 'PelangganCtrl::lihatkeranjang');
 $routes->get('/pelangganctrl/hapus/(:segment)', 'PelangganCtrl::hapus/$1');
 $routes->get('/pelangganctrl/update_quantity', 'PelangganCtrl::update_quantity');

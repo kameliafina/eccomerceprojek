@@ -147,17 +147,22 @@ class PelangganCtrl extends BaseController
 
     public function tambahkeranjang()
 {
+    // Cek apakah pengguna sudah login
+    if (!session()->get('isLoggedIn')) {
+        return redirect()->to('/login')->with('error', 'Silakan login untuk menambahkan barang ke keranjang.');
+    }
+
     $kd_barang = $this->request->getPost('kd_barang'); // Mengambil kode barang dari request
-    $dapur = $this->barangModel->find($kd_barang);  // Mencari kd_barang yang diklik oleh user
+    $dapur = $this->barangModel->find($kd_barang);    // Mencari kd_barang yang diklik oleh user
 
     if ($dapur) {
         $item = [
-            'kd_barang' => $dapur['kd_barang'],
+            'kd_barang'   => $dapur['kd_barang'],
             'nama_barang' => $dapur['nama_barang'],
             'harga_barang' => $dapur['harga_barang'],
-            'deskripsi' => $dapur['deskripsi'],
-            'foto' => $dapur['foto'],
-            'quantity' => 1,
+            'deskripsi'   => $dapur['deskripsi'],
+            'foto'        => $dapur['foto'],
+            'quantity'    => 1,
         ];
 
         $cart = $this->session->get('cart') ?? []; // Mengambil data keranjang belanja di session cart
@@ -170,16 +175,15 @@ class PelangganCtrl extends BaseController
 
         // Simpan data ke database
         $keranjangData = [
-            'kd_barang' => $item['kd_barang'],
+            'kd_barang'   => $item['kd_barang'],
             'nama_barang' => $item['nama_barang'],
             'harga_barang' => $item['harga_barang'],
-            'deskripsi' => $item['deskripsi'],
-            'foto' => $item['foto'],
-            'quantity' => $item['quantity'],
+            'deskripsi'   => $item['deskripsi'],
+            'foto'        => $item['foto'],
+            'quantity'    => $item['quantity'],
         ];
 
-        // Simpan ke database
-        $this->keranjangModel->insert($keranjangData);
+        $this->keranjangModel->insert($keranjangData); // Simpan ke database
 
         $this->session->set('cart', $cart); // Mengupdate session cart
         return redirect()->to('pelangganctrl/datadapur')->with('message', 'Barang sudah berhasil ditambahkan');
@@ -187,6 +191,7 @@ class PelangganCtrl extends BaseController
 
     return redirect()->back()->with('error', 'Barang tidak ditemukan');
 }
+
 
     public function update_quantity() {
         $id_barang = $this->request->getPost('kd_barang');

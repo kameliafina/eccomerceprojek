@@ -1,7 +1,7 @@
 <?= $this->extend('main/layout') ?>
 
 <?= $this->section('judul') ?>
-BARANG
+KASIR
 <?= $this->endSection('judul') ?>
 
 <?= $this->section('isi') ?>
